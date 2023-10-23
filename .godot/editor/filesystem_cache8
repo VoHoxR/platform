@@ -1,8 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1697643005
-bazzabogan.png::CompressedTexture2D::596307224276614619::1697559245::1697559245::1::::<><>::
+::res://::1698076598
+bazzabogan.png::CompressedTexture2D::596307224276614619::1697643926::1697559245::1::::<><>::
 block.png::CompressedTexture2D::2017754756757303917::1697558171::1697558171::1::::<><>::
 brick.png::CompressedTexture2D::3815238287795538141::1697558173::1697558173::1::::<><>::
 icon.svg::CompressedTexture2D::3152037699508729116::1697557105::1697557113::1::::<><>::
+player.gd::GDScript::-1::1697730411::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::7990711033382707654::1698076460::0::1::::<><>::res://player.gd<>uid://iq4dfl4gfnyp::::res://bazzabogan.png
 README.md::TextFile::-1::1697557276::0::1::::<><>::
-world.tscn::PackedScene::3894097243793807280::1697559327::0::1::::<><>::uid://bumeogjduyr8x::::res://brick.png<>uid://30oejyd8rs6p::::res://block.png
+toad.png::CompressedTexture2D::627822778679636832::1698076598::1698076598::1::::<><>::
+toad.tscn::PackedScene::612280612507968382::1698076515::0::1::::<><>::
+world.tscn::PackedScene::3894097243793807280::1698076478::0::1::::<><>::uid://bumeogjduyr8x::::res://brick.png<>uid://30oejyd8rs6p::::res://block.png<>uid://dl303w2t2cr6e::::res://player.tscn

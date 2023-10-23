@@ -1,3 +1,83 @@
-[gd_scene format=3 uid="uid://iyuf4do0i5bu"]
+[gd_scene load_steps=13 format=3 uid="uid://iyuf4do0i5bu"]
+
+[ext_resource type="Script" path="res://toad.gd" id="1_ywthg"]
+[ext_resource type="Texture2D" uid="uid://i7efc0speu1m" path="res://toad.png" id="2_4y1o4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjq55"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsd5m"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naw57"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxtqk"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbt5a"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if13p"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ph4"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkgft"]
+atlas = ExtResource("2_4y1o4")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yewhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjq55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsd5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naw57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxtqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbt5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if13p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ph4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkgft")
+}],
+"loop": true,
+"name": &"hop",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8t4s"]
+radius = 7.0
 
 [node name="toad" type="CharacterBody2D"]
+script = ExtResource("1_ywthg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_yewhe")
+animation = &"hop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_p8t4s")

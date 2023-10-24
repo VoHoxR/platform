@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://iyuf4do0i5bu"]
+[gd_scene load_steps=14 format=3 uid="uid://iyuf4do0i5bu"]
 
 [ext_resource type="Script" path="res://toad.gd" id="1_ywthg"]
 [ext_resource type="Texture2D" uid="uid://i7efc0speu1m" path="res://toad.png" id="2_4y1o4"]
@@ -67,8 +67,11 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p8t4s"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_372bj"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paj0g"]
+size = Vector2(16, 1)
 
 [node name="toad" type="CharacterBody2D"]
 script = ExtResource("1_ywthg")
@@ -79,5 +82,13 @@ sprite_frames = SubResource("SpriteFrames_yewhe")
 animation = &"hop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_p8t4s")
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_372bj")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_paj0g")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

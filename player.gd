@@ -60,11 +60,11 @@ func die():
 	if is_dying:
 		return
 		
-	is_dying = true
+	is_dying = true 
 	animated_sprite_2d.play("die")
 	await move_player_up_and_down()
 	get_tree().reload_current_scene()
-
+	Global.total_coins = 0
 func move_player_up_and_down():
 	var start_position = position
 	var up_position = start_position + Vector2(0, -100)

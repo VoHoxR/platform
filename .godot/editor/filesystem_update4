@@ -8,3 +8,6 @@ res://big_toad.tscn
 res://coin.tscn
 res://coin.gd
 res://world.gd
+res://global.gd
+res://coin_gui.gd
+res://coin_gui.tscn

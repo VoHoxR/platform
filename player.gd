@@ -25,7 +25,7 @@ func _physics_process(delta):
 	else:
 		is_jumping = false
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 
@@ -67,7 +67,7 @@ func die():
 
 func move_player_up_and_down():
 	var start_position = position
-	var up_position = start_position + Vector2(0, -75)
+	var up_position = start_position + Vector2(0, -100)
 	var down_position = start_position + Vector2(0, 600)
 	
 	while position.y > up_position.y:

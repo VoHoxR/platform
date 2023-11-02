@@ -63,8 +63,15 @@ func die():
 	is_dying = true 
 	animated_sprite_2d.play("die")
 	await move_player_up_and_down()
-	get_tree().reload_current_scene()
-	Global.total_coins = 0
+	Global.player_lives -= 1
+	
+	if Global.player_lives > 0:
+		print("Reloading Scene")
+		get_tree().reload_current_scene()
+	else:
+		queue_free()
+		#get_tree().change_scene_to_file("res://gameover.tscn")
+		
 func move_player_up_and_down():
 	var start_position = position
 	var up_position = start_position + Vector2(0, -100)
@@ -80,3 +87,8 @@ func move_player_up_and_down():
 		
 func on_DeathTimer_timeot():
 	get_tree().reload_current_scene()
+
+
+func _on_interact_body_entered(body):
+	if body.is_in_group("Player"):
+		body.die()

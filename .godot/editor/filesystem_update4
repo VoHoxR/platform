@@ -1,13 +1,10 @@
 res://world.tscn
 res://player.tscn
 res://toad.tscn
-res://toad.gd
-res://player.gd
-res://big_toad.gd
 res://big_toad.tscn
 res://coin.tscn
-res://coin.gd
-res://world.gd
-res://global.gd
-res://coin_gui.gd
 res://coin_gui.tscn
+res://world.gd
+res://underworld.tscn
+res://player.gd
+res://global.gd

@@ -39,7 +39,7 @@ sources/2 = SubResource("TileSetAtlasSource_cmolh")
 sources/4 = SubResource("TileSetAtlasSource_cw3vx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tngkp"]
-size = Vector2(1324.5, 58)
+size = Vector2(1526.5, 58)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa183"]
 size = Vector2(12, 17)
@@ -94,7 +94,7 @@ position = Vector2(552, 370)
 [node name="interact" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
-position = Vector2(503.75, 738)
+position = Vector2(604.75, 738)
 shape = SubResource("RectangleShape2D_tngkp")
 
 [node name="coin_gui" parent="." instance=ExtResource("8_tlhqu")]

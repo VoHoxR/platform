@@ -6,3 +6,8 @@ res://toad.tscn
 res://big_toad.tscn
 res://coin.tscn
 res://underworld.tscn
+res://start.gd
+res://start.tscn
+res://gameover.gd
+res://player.gd
+res://gameover.tscn

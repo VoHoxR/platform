@@ -1,98 +1,47 @@
-[gd_scene load_steps=14 format=3 uid="uid://nbhdg7mikors"]
+[gd_scene load_steps=6 format=3 uid="uid://nbhdg7mikors"]
 
 [ext_resource type="Script" path="res://big_toad.gd" id="1_3t4uj"]
-[ext_resource type="Texture2D" uid="uid://7uq5ciyiykph" path="res://toad2.png" id="2_84asp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6776"]
-atlas = ExtResource("2_84asp")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3m3th"]
-atlas = ExtResource("2_84asp")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36a3v"]
-atlas = ExtResource("2_84asp")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_erjb4"]
-atlas = ExtResource("2_84asp")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2724k"]
-atlas = ExtResource("2_84asp")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wx0de"]
-atlas = ExtResource("2_84asp")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bo4m1"]
-atlas = ExtResource("2_84asp")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8x12k"]
-atlas = ExtResource("2_84asp")
-region = Rect2(112, 0, 16, 16)
+[ext_resource type="Texture2D" uid="uid://br1rhygne5gw" path="res://ChickHicksCars3-removebg-preview.png" id="2_u7gfh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a6kwk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6776")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3m3th")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36a3v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_erjb4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2724k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wx0de")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bo4m1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8x12k")
+"texture": ExtResource("2_u7gfh")
 }],
 "loop": true,
 "name": &"hop",
 "speed": 11.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oosmh"]
-size = Vector2(14, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymynl"]
+size = Vector2(44.5, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry1ab"]
-size = Vector2(16, 3)
+size = Vector2(48, 3)
 
 [node name="big_toad" type="CharacterBody2D"]
 script = ExtResource("1_3t4uj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(5, -3)
+scale = Vector2(0.122222, 0.121827)
 sprite_frames = SubResource("SpriteFrames_a6kwk")
 animation = &"hop"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_oosmh")
+position = Vector2(4.75, -3.5)
+shape = SubResource("RectangleShape2D_ymynl")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -12.5)
+position = Vector2(5, -15)
 shape = SubResource("RectangleShape2D_ry1ab")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-9, -9)
-target_position = Vector2(0, 15)
+position = Vector2(-19, -8)
+target_position = Vector2(0, 24)
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

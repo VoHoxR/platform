@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 var is_dying = false
 var is_jumping = false
-
-var SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+var is_big = false
+const SPEED = 300.0
+const JUMP_VELOCITY = -600.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -13,7 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	add_to_group("Player")
-	death_timer.connect("timeout", Callable(self, "_on_DeathTimer"))
+	death_timer.connect("timeout", Callable(self, "_on_DeathTimer_timeout"))
+
 
 func _physics_process(delta):
 	if is_dying:
@@ -24,6 +25,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	else:
 		is_jumping = false
+
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -45,34 +47,36 @@ func update_animation(direction):
 		
 	if is_jumping:
 		animated_sprite_2d.play("jump")
-	if direction != 0:
-		animated_sprite_2d.flip_h = (direction < 0)
+	elif direction != 0:
+		animated_sprite_2d.flip_h = (direction > 0)
 		animated_sprite_2d.play("run")
 	else:
 		animated_sprite_2d.play("idle")
 
 
+
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy") and body.is_alive:
-		die()
-
+		if is_big:
+			become_small()
+		else:
+			die()
+		
 func die():
 	if is_dying:
 		return
-		
-	is_dying = true 
+
+	is_dying = true
 	animated_sprite_2d.play("die")
 	await move_player_up_and_down()
 	Global.player_lives -= 1
-	
+
 	if Global.player_lives > 0:
-		print("Reloading Scene")
+		print("Reloading scene")
 		get_tree().reload_current_scene()
 	else:
-		Global.total_coins = 0
-		Global.player_lives = 3
 		get_tree().change_scene_to_file("res://gameover.tscn")
-		
+
 func move_player_up_and_down():
 	var start_position = position
 	var up_position = start_position + Vector2(0, -100)
@@ -86,10 +90,13 @@ func move_player_up_and_down():
 		position.y += 4
 		await get_tree().create_timer(0.01).timeout
 		
-func on_DeathTimer_timeot():
+func on_DeathTimer_timeout():
 	get_tree().reload_current_scene()
 
-
-func _on_interact_body_entered(body):
-	if body.is_in_group("Player"):
-		body.die()
+func become_big():
+	is_big = true
+	self.scale = Vector2(1.5, 1.5)  
+	
+func become_small():
+	is_big = false
+	self.scale = Vector2(1, 1) 

@@ -27,4 +27,3 @@ func _on_hitbox_body_entered(body):
 	if body.is_in_group("Player"):
 		is_alive = false
 		queue_free()
-
